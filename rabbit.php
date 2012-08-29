@@ -48,7 +48,7 @@ function publish($topic, $data, $contentType = 'text/plain', $exchange = 'amq.de
         $exchange = 'amq.default';
     }
 
-    $msg = new AMQP\AMQPMessage($data, array('content_type' => $contentType));
+    $msg = new AMQP\AMQPMessage($data, array('content_type' => $contentType, 'delivery_mode' => 2));
     local::$channel->basic_publish($msg, $exchange, $topic);
 }
 

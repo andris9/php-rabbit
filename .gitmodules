@@ -1,3 +1,0 @@
-[submodule "php-amqplib"]
-	path = php-amqplib
-	url = git://github.com/andris9/php-amqplib.git

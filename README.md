@@ -14,17 +14,32 @@ This is an extremely simple AMQP client for RabbitMQ. Currently it can only publ
 
 ## Usage
 
-Update php-rabbit/config.php
-
 Include the module
 
-    include_once "/path/to/php-rabbit/ampq.php";
+```php
+<?php
+include_once "/path/to/php-rabbit/rabbit.php";
+```
+
+Configure server info
+
+```php
+<?php
+Rabbit\config($host, $port=5672, $user, $pass, $vhost="/");
+```
 
 Publish something to server
 
-    \Rabbit\publish($key, $data[, $contentType="text/plain"[, $exchange="amq.topic"]]);
+```php
+<?php
+Rabbit\publish($key, $data[, $contentType="text/plain"[, $exchange="amq.default"]]);
+```
 
 Example:
 
-    include_once "/path/to/php-rabbit/ampq.php";
-    \Rabbit\publish("news.world.today", "No news :S");
+```php
+<?php
+include_once "/path/to/php-rabbit/rabbit.php";
+Rabbit\config("rabbit1", null, "guest", "guest");
+Rabbit\publish("news", "No news :S");
+```

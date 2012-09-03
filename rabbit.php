@@ -53,8 +53,12 @@ function publish($topic, $data, $contentType = 'text/plain', $exchange = 'amq.de
 }
 
 function disconnect(){
-    local::$channel->close();
-    local::$connection->close();
+    if(local::$channel){
+        local::$channel->close();
+    }
+    if(local::$connection){
+        local::$connection->close();
+    }
 }
 
 register_shutdown_function('Rabbit\\disconnect');
